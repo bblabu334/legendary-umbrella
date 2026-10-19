@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🔢 数字猜猜乐</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <h1>🔢 数字猜猜乐</h1>
+      <p class="subtitle"></p>
+    </header>
+
+    <!-- 计分板 -->
+    <section class="scoreboard">
+      <div class="score-item">
+        <span class="score-label">总得分</span>
+        <span class="score-value" id="totalScore">0</span>
+      </div>
+      <div class="score-item">
+        <span class="score-label">第几轮</span>
+        <span class="score-value" id="roundNum">1</span>
+      </div>
+      <div class="score-item">
+        <span class="score-label">胜率</span>
+        <span class="score-value" id="winRate">0%</span>
+      </div>
+      <div class="score-item highlight">
+        <span class="score-label">最佳纪录</span>
+        <span class="score-value" id="bestRecord">-</span>
+      </div>
+    </section>
+
+    <!-- 当局状态 -->
+    <section class="round-card">
+      <div class="round-info">
+        <span>剩余机会：<strong id="remaining">7</strong> / 7</span>
+        <span>已用次数：<strong id="used">0</strong></span>
+      </div>
+
+      <!-- 猜测区域 -->
+      <div class="guess-area">
+        <label class="guess-label" for="guessInput">我猜数字是：</label>
+        <div class="input-row">
+          <input type="number" id="guessInput" min="1" max="100" placeholder="1 ~ 100" />
+          <button id="guessBtn" class="btn btn-primary">确认猜测！</button>
+        </div>
+      </div>
+
+      <!-- 提示信息 -->
+      <div id="hintBox" class="hint-box hidden">
+        <div id="hintIcon" class="hint-icon"></div>
+        <div id="hintText" class="hint-text"></div>
+      </div>
+
+      <!-- 结果横幅 -->
+      <div id="banner" class="banner hidden"></div>
+    </section>
+
+    <!-- 操作按钮 -->
+    <div class="actions">
+      <button id="newRoundBtn" class="btn btn-ghost">跳过本局（开新局）</button>
+      <button id="resetBtn" class="btn btn-danger">重新开始游戏</button>
+    </div>
+
+    <!-- 历史战绩 -->
+    <section class="history">
+      <div class="history-head">
+        <span>📋 历史战绩</span>
+        <span id="totalRoundsTag">共 0 局</span>
+      </div>
+      <ul id="historyList" class="history-list">
+        <li class="empty-hint">暂无记录，开始猜测吧！</li>
+      </ul>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
